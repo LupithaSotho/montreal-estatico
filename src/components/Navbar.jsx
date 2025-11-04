@@ -1,28 +1,20 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 export default function Navbar() {
-  const location = useLocation();
   const navigate = useNavigate();
 
-  const scrollToContacto = () => {
-    // Si ya estamos en la página principal
-    if (location.pathname === "/") {
+  const goToContacto = () => {
+    // Navegamos primero a la página principal
+    navigate("/");
+
+    // Esperamos un momento para que se cargue el Home
+    setTimeout(() => {
       const contacto = document.getElementById("contacto");
       if (contacto) {
         contacto.scrollIntoView({ behavior: "smooth" });
       }
-    } else {
-      // Si estamos en otra ruta, primero navegamos al inicio
-      navigate("/");
-      // Luego esperamos un poco para que cargue y hacemos scroll
-      setTimeout(() => {
-        const contacto = document.getElementById("contacto");
-        if (contacto) {
-          contacto.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 500);
-    }
+    }, 600);
   };
 
   return (
@@ -69,10 +61,10 @@ export default function Navbar() {
               <Link className="nav-link" to="/certificaciones">Certificaciones</Link>
             </li>
 
-            {/* 🔹 CONTACTO → siempre lleva al formulario de contacto */}
+            {/* 🔹 CONTACTO → lleva al formulario de contacto */}
             <li className="nav-item">
               <button
-                onClick={scrollToContacto}
+                onClick={goToContacto}
                 className="nav-link btn btn-link p-0"
                 style={{ textDecoration: "none" }}
               >
@@ -85,4 +77,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
