@@ -13,7 +13,7 @@ export default function Inscripciones() {
 
   // Cargar inscripciones
   const cargarInscripciones = async () => {
-    const res = await fetch("http://127.0.0.1:8000/api/inscripciones/");
+    const res = await fetch("https://montreal-backend.onrender.com/api/inscripciones/");
     const data = await res.json();
     setInscripciones(data);
   };
@@ -21,7 +21,7 @@ export default function Inscripciones() {
   // Eliminar inscripción
   const eliminarInscripcion = async (id) => {
     if (window.confirm("¿Seguro que deseas eliminar esta inscripción?")) {
-      await fetch(`http://127.0.0.1:8000/api/inscripciones/${id}/`, {
+      await fetch(`https://montreal-backend.onrender.com/api/inscripciones//${id}/`, {
         method: "DELETE",
       });
       cargarInscripciones();
@@ -37,7 +37,7 @@ export default function Inscripciones() {
   // Guardar cambios
   const guardarEdicion = async (e) => {
     e.preventDefault();
-    await fetch(`http://127.0.0.1:8000/api/inscripciones/${editId}/`, {
+    await fetch(`https://montreal-backend.onrender.com/api/inscripciones/${editId}/`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
