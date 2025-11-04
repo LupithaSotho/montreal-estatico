@@ -18,13 +18,34 @@ export default function Enroll() {
     setSelectedLevel("");
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(
-      `Registro enviado:\nCurso: ${selectedCourse}\nNivel: ${selectedLevel}\nGracias por inscribirte en Montreal.`
-    );
+  const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  const formData = {
+    nombre: event.target[0].value,
+    correo: event.target[1].value,
+    curso: selectedCourse,
+    nivel: selectedLevel,
+    comentarios: event.target[5].value,
   };
 
+  try {
+    const response = await fetch("http://127.0.0.1:8000/api/inscripciones/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      alert("✅ Inscripción registrada correctamente.");
+    } else {
+      alert("❌ Error al registrar la inscripción.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("⚠️ Error de conexión con el servidor.");
+  }
+};
   return (
     <div className="bg-light">
       {/* Encabezado */}
