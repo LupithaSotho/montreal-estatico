@@ -28,7 +28,7 @@ export default function Navbar() {
             <li className="nav-item"><Link className="nav-link" to="/">Inicio</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/quienes-somos">Quiénes somos</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/cursos">Cursos</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/inscripciones">Inscripciones</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/enroll">Inscripciones</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/certificaciones">Certificaciones</Link></li>
             <li className="nav-item"><a className="nav-link" href="#contacto">Contacto</a></li>
           </ul>
