@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // ✅ Para navegar sin recargar la página
+import { Link } from "react-router-dom";
 import certBanner from "../assets/certificaciones-banner.png";
 
 export default function Enroll() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // 🔹 Opciones por curso
   const courseLevels = {
@@ -24,6 +25,7 @@ export default function Enroll() {
   // 🔹 Enviar formulario al backend Django
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
 
     const formData = {
       nombre: event.target.nombre.value,
@@ -46,11 +48,13 @@ export default function Enroll() {
         setSelectedCourse("");
         setSelectedLevel("");
       } else {
-        alert("❌ Error al registrar la inscripción.");
+        alert("❌ Error al registrar la inscripción. Verifica los datos.");
       }
     } catch (error) {
       console.error(error);
-      alert("⚠️ Error de conexión con el servidor.");
+      alert("⚠️ No se pudo conectar con el servidor. Revisa tu conexión o el backend.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -71,7 +75,8 @@ export default function Enroll() {
           <form
             id="formulario"
             onSubmit={handleSubmit}
-            className="row justify-content-center"
+            className="row justify-content-center needs-validation"
+            noValidate
           >
             <div className="col-md-8 col-lg-6 p-4 bg-white rounded shadow-sm">
               {/* Nombre */}
@@ -118,9 +123,7 @@ export default function Enroll() {
               {/* Niveles dinámicos */}
               {selectedCourse && (
                 <div className="mb-3">
-                  <label className="form-label fw-bold">
-                    Nivel / Subcategoría
-                  </label>
+                  <label className="form-label fw-bold">Nivel / Subcategoría</label>
                   <select
                     className="form-select"
                     value={selectedLevel}
@@ -152,8 +155,7 @@ export default function Enroll() {
                     Certificaciones Cambridge
                   </h5>
                   <p className="text-center small mb-3">
-                    Prepárate para los exámenes Cambridge English, reconocidos
-                    internacionalmente:
+                    Prepárate para los exámenes Cambridge English, reconocidos internacionalmente:
                   </p>
                   <ul className="list-unstyled text-center small">
                     <li>📘 Starters (Pre A1)</li>
@@ -191,18 +193,22 @@ export default function Enroll() {
 
               {/* Botón enviar */}
               <div className="text-center mt-4">
-                <button type="submit" className="btn btn-danger btn-lg">
-                  Enviar inscripción
+                <button
+                  type="submit"
+                  className="btn btn-danger btn-lg"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Enviando..." : "Enviar inscripción"}
                 </button>
               </div>
             </div>
           </form>
 
           {/* 🔹 Botón para ver inscripciones */}
-          <div className="text-center mt-4">
+          <div className="text-center mt-5">
             <Link
               to="/inscripciones"
-              className="btn btn-outline-dark btn-sm fw-bold"
+              className="btn btn-outline-dark fw-bold px-4 py-2"
             >
               🔍 Ver inscripciones registradas
             </Link>
