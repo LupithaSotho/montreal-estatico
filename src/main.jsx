@@ -26,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/quienes-somos" element={<About />} />
           <Route path="/cursos" element={<Courses />} />
           <Route path="/inscripciones" element={<Enroll />} />
+          <Route path="/inscripciones" element={<Inscripciones />} />
           <Route path="/certificaciones" element={<Certifications />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

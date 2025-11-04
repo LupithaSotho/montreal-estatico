@@ -5,6 +5,7 @@ export default function Enroll() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
 
+  // Niveles por tipo de curso
   const courseLevels = {
     Inglés: ["Starters", "Movers", "Flyers", "A2", "B1", "B2", "C1", "C2"],
     Computación: ["Básico", "Intermedio", "Avanzado", "Programador"],
@@ -12,40 +13,46 @@ export default function Enroll() {
     Cultura: ["Taller de Arte", "Taller de Lectura", "Taller de Expresión"],
   };
 
+  // Cambiar curso seleccionado
   const handleCourseChange = (event) => {
     const course = event.target.value;
     setSelectedCourse(course);
     setSelectedLevel("");
   };
 
+  // Enviar datos al backend
   const handleSubmit = async (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const formData = {
-    nombre: event.target[0].value,
-    correo: event.target[1].value,
-    curso: selectedCourse,
-    nivel: selectedLevel,
-    comentarios: event.target[5].value,
+    const formData = {
+      nombre: event.target[0].value,
+      correo: event.target[1].value,
+      curso: selectedCourse,
+      nivel: selectedLevel,
+      comentarios: event.target[5].value,
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/inscripciones/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("✅ Inscripción registrada correctamente.");
+        event.target.reset();
+        setSelectedCourse("");
+        setSelectedLevel("");
+      } else {
+        alert("❌ Error al registrar la inscripción.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("⚠️ Error de conexión con el servidor.");
+    }
   };
 
-  try {
-    const response = await fetch("http://127.0.0.1:8000/api/inscripciones/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert("✅ Inscripción registrada correctamente.");
-    } else {
-      alert("❌ Error al registrar la inscripción.");
-    }
-  } catch (error) {
-    console.error(error);
-    alert("⚠️ Error de conexión con el servidor.");
-  }
-};
   return (
     <div className="bg-light">
       {/* Encabezado */}
@@ -164,17 +171,24 @@ export default function Enroll() {
                 ></textarea>
               </div>
 
-              {/* Botón */}
+              {/* Botón de enviar */}
               <div className="text-center mt-4">
                 <button type="submit" className="btn btn-danger btn-lg">
                   Enviar inscripción
                 </button>
               </div>
+
+              {/* Botón para ver / editar / eliminar inscripciones */}
+              <div className="text-center mt-3">
+                <a href="/inscripciones" className="btn btn-outline-dark btn-sm fw-bold">
+                  🔍 Ver inscripciones registradas
+                </a>
+              </div>
+
             </div>
           </form>
         </div>
       </section>
-
     </div>
   );
 }
