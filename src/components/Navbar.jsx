@@ -1,25 +1,27 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const scrollToFooter = () => {
+  const scrollToContacto = () => {
     // Si ya estamos en la página principal
     if (location.pathname === "/") {
-      const footer = document.getElementById("footer");
-      if (footer) {
-        footer.scrollIntoView({ behavior: "smooth" });
+      const contacto = document.getElementById("contacto");
+      if (contacto) {
+        contacto.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // Si estamos en otra ruta, redirigimos a Home y luego hacemos scroll
-      window.location.hash = "#footer";
+      // Si estamos en otra ruta, primero navegamos al inicio
+      navigate("/");
+      // Luego esperamos un poco para que cargue y hacemos scroll
       setTimeout(() => {
-        const footer = document.getElementById("footer");
-        if (footer) {
-          footer.scrollIntoView({ behavior: "smooth" });
+        const contacto = document.getElementById("contacto");
+        if (contacto) {
+          contacto.scrollIntoView({ behavior: "smooth" });
         }
-      }, 400);
+      }, 500);
     }
   };
 
@@ -67,10 +69,10 @@ export default function Navbar() {
               <Link className="nav-link" to="/certificaciones">Certificaciones</Link>
             </li>
 
-            {/* 🔹 CONTACTO → hace scroll suave hasta el footer */}
+            {/* 🔹 CONTACTO → siempre lleva al formulario de contacto */}
             <li className="nav-item">
               <button
-                onClick={scrollToFooter}
+                onClick={scrollToContacto}
                 className="nav-link btn btn-link p-0"
                 style={{ textDecoration: "none" }}
               >
@@ -83,3 +85,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
