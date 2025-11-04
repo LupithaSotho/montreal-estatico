@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import certBanner from "../assets/certificaciones-banner.png";
 
+
 export default function Courses() {
   return (
     <div>
