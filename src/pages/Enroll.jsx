@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // ✅ Para navegar sin recargar la página
 import certBanner from "../assets/certificaciones-banner.png";
 
 export default function Enroll() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
 
-  // Niveles por tipo de curso
+  // 🔹 Opciones por curso
   const courseLevels = {
     Inglés: ["Starters", "Movers", "Flyers", "A2", "B1", "B2", "C1", "C2"],
     Computación: ["Básico", "Intermedio", "Avanzado", "Programador"],
@@ -13,23 +14,23 @@ export default function Enroll() {
     Cultura: ["Taller de Arte", "Taller de Lectura", "Taller de Expresión"],
   };
 
-  // Cambiar curso seleccionado
+  // 🔹 Cambiar curso seleccionado
   const handleCourseChange = (event) => {
     const course = event.target.value;
     setSelectedCourse(course);
     setSelectedLevel("");
   };
 
-  // Enviar datos al backend
+  // 🔹 Enviar formulario al backend Django
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = {
-      nombre: event.target[0].value,
-      correo: event.target[1].value,
+      nombre: event.target.nombre.value,
+      correo: event.target.correo.value,
       curso: selectedCourse,
       nivel: selectedLevel,
-      comentarios: event.target[5].value,
+      comentarios: event.target.comentarios.value,
     };
 
     try {
@@ -55,23 +56,30 @@ export default function Enroll() {
 
   return (
     <div className="bg-light">
-      {/* Encabezado */}
-      <section className="text-center py-5 text-white" style={{ backgroundColor: "#D32F2F" }}>
+      {/* 🔴 Encabezado */}
+      <section
+        className="text-center py-5 text-white"
+        style={{ backgroundColor: "#D32F2F" }}
+      >
         <h1 className="fw-bold">Formulario de Inscripción</h1>
         <p>Completa tus datos y forma parte de la comunidad Montreal.</p>
       </section>
 
-      {/* Formulario */}
+      {/* 🧾 Formulario */}
       <section className="py-5">
         <div className="container">
-          <form id="formulario" onSubmit={handleSubmit} className="row justify-content-center">
+          <form
+            id="formulario"
+            onSubmit={handleSubmit}
+            className="row justify-content-center"
+          >
             <div className="col-md-8 col-lg-6 p-4 bg-white rounded shadow-sm">
-
               {/* Nombre */}
               <div className="mb-3">
                 <label className="form-label fw-bold">Nombre completo</label>
                 <input
                   type="text"
+                  name="nombre"
                   className="form-control"
                   placeholder="Escribe tu nombre completo"
                   required
@@ -83,6 +91,7 @@ export default function Enroll() {
                 <label className="form-label fw-bold">Correo electrónico</label>
                 <input
                   type="email"
+                  name="correo"
                   className="form-control"
                   placeholder="ejemplo@correo.com"
                   required
@@ -109,7 +118,9 @@ export default function Enroll() {
               {/* Niveles dinámicos */}
               {selectedCourse && (
                 <div className="mb-3">
-                  <label className="form-label fw-bold">Nivel / Subcategoría</label>
+                  <label className="form-label fw-bold">
+                    Nivel / Subcategoría
+                  </label>
                   <select
                     className="form-select"
                     value={selectedLevel}
@@ -134,11 +145,15 @@ export default function Enroll() {
                     alt="Certificaciones Cambridge"
                     className="img-fluid rounded mb-3"
                   />
-                  <h5 className="text-center fw-bold" style={{ color: "#1565C0" }}>
+                  <h5
+                    className="text-center fw-bold"
+                    style={{ color: "#1565C0" }}
+                  >
                     Certificaciones Cambridge
                   </h5>
                   <p className="text-center small mb-3">
-                    Prepárate para los exámenes Cambridge English, reconocidos internacionalmente:
+                    Prepárate para los exámenes Cambridge English, reconocidos
+                    internacionalmente:
                   </p>
                   <ul className="list-unstyled text-center small">
                     <li>📘 Starters (Pre A1)</li>
@@ -151,42 +166,47 @@ export default function Enroll() {
                     <li>📘 C2 Proficiency (CPE)</li>
                   </ul>
                   <div className="text-center">
-                    <a
-                      href="/certificaciones"
+                    <Link
+                      to="/certificaciones"
                       className="btn btn-outline-primary btn-sm fw-bold"
                     >
                       Conoce más sobre Cambridge
-                    </a>
+                    </Link>
                   </div>
                 </div>
               )}
 
               {/* Comentarios */}
               <div className="mt-3">
-                <label className="form-label fw-bold">Comentarios adicionales</label>
+                <label className="form-label fw-bold">
+                  Comentarios adicionales
+                </label>
                 <textarea
+                  name="comentarios"
                   className="form-control"
                   rows="3"
                   placeholder="Escribe algún detalle adicional..."
                 ></textarea>
               </div>
 
-              {/* Botón de enviar */}
+              {/* Botón enviar */}
               <div className="text-center mt-4">
                 <button type="submit" className="btn btn-danger btn-lg">
                   Enviar inscripción
                 </button>
               </div>
-
-              {/* Botón para ver / editar / eliminar inscripciones */}
-              <div className="text-center mt-3">
-                <a href="/inscripciones" className="btn btn-outline-dark btn-sm fw-bold">
-                  🔍 Ver inscripciones registradas
-                </a>
-              </div>
-
             </div>
           </form>
+
+          {/* 🔹 Botón para ver inscripciones */}
+          <div className="text-center mt-4">
+            <Link
+              to="/inscripciones"
+              className="btn btn-outline-dark btn-sm fw-bold"
+            >
+              🔍 Ver inscripciones registradas
+            </Link>
+          </div>
         </div>
       </section>
     </div>
