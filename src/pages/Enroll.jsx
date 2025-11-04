@@ -207,11 +207,12 @@ export default function Enroll() {
           {/* 🔹 Botón para ver inscripciones */}
           <div className="text-center mt-5">
             <Link
-              to="/inscripciones"
-              className="btn btn-outline-dark fw-bold px-4 py-2"
-            >
-              🔍 Ver inscripciones registradas
-            </Link>
+  to="/inscripciones"
+  className="btn fw-bold px-4 py-2 text-white"
+  style={{ backgroundColor: "#343a40" }}
+>
+  🔍 Ver inscripciones registradas
+</Link>
           </div>
         </div>
       </section>
