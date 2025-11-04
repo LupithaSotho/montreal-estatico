@@ -90,7 +90,7 @@ export default function Certifications() {
           <p className="mb-4">
             Inscríbete en nuestro curso de preparación y presenta tu examen.
           </p>
-          <a href="/Enroll" className="btn btn-light btn-lg fw-bold">
+          <a href="/enroll" className="btn btn-light btn-lg fw-bold">
             Ir a Inscripciones
           </a>
         </div>

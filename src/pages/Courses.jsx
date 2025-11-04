@@ -38,7 +38,7 @@ export default function Courses() {
                     <li>📘 Niveles: Starters, Movers, Flyers</li>
                     <li>📗 Avanzados: A2, B1, B2, C1, C2</li>
                   </ul>
-                  <Link to="/Enroll" className="btn btn-outline-danger mt-3">
+                  <Link to="/enroll" className="btn btn-outline-danger mt-3">
                     Inscribirme
                   </Link>
                 </div>
@@ -56,7 +56,7 @@ export default function Courses() {
                   <ul className="list-unstyled text-secondary small">
                     <li>💻 Niveles: Básico, Intermedio, Avanzado, Programador</li>
                   </ul>
-                  <Link to="/Enroll" className="btn btn-outline-primary mt-3">
+                  <Link to="/enroll" className="btn btn-outline-primary mt-3">
                     Inscribirme
                   </Link>
                 </div>
@@ -74,7 +74,7 @@ export default function Courses() {
                   <ul className="list-unstyled text-secondary small">
                     <li>📚 Matemáticas, Español, Ciencias, Historia</li>
                   </ul>
-                  <Link to="/Enroll" className="btn btn-outline-success mt-3">
+                  <Link to="/enroll" className="btn btn-outline-success mt-3">
                     Inscribirme
                   </Link>
                 </div>
@@ -92,7 +92,7 @@ export default function Courses() {
                   <ul className="list-unstyled text-secondary small">
                     <li>🎨 Talleres: Arte, Lectura, Expresión</li>
                   </ul>
-                  <Link to="/Enroll" className="btn btn-outline-dark mt-3">
+                  <Link to="/enroll" className="btn btn-outline-dark mt-3">
                     Inscribirme
                   </Link>
                 </div>
@@ -136,7 +136,7 @@ export default function Courses() {
           <p className="mb-4">
             Inscríbete en el curso que más se adapte a tus necesidades y certifícate internacionalmente.
           </p>
-          <a href="/inscripciones#formulario" className="btn btn-light btn-lg fw-bold">
+          <a href="/enroll#formulario" className="btn btn-light btn-lg fw-bold">
             Ir a Inscribirme
           </a>
         </div>
