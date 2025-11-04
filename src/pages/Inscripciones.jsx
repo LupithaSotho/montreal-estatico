@@ -13,7 +13,7 @@ export default function Inscripciones() {
 
   // Cargar inscripciones
   const cargarInscripciones = async () => {
-    const res = await fetch("https://montreal-backend-production.up.railway.app/api/inscripciones/");
+    const res = await fetch('${API_URL}/api/inscripciones/');
     const data = await res.json();
     setInscripciones(data);
   };
@@ -21,7 +21,7 @@ export default function Inscripciones() {
   // Eliminar inscripción
   const eliminarInscripcion = async (id) => {
     if (window.confirm("¿Seguro que deseas eliminar esta inscripción?")) {
-      await fetch(`https://montreal-backend-production.up.railway.app/api/inscripciones/${id}/`, {
+      await fetch(`${API_URL}/api/inscripciones/${id}/`, {
         method: "DELETE",
       });
       cargarInscripciones();
@@ -37,7 +37,7 @@ export default function Inscripciones() {
   // Guardar cambios
   const guardarEdicion = async (e) => {
     e.preventDefault();
-    await fetch(`https://montreal-backend-production.up.railway.app/api/inscripciones/${editId}/`, {
+    await fetch(`${API_URL}/api/inscripciones/${editId}/`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

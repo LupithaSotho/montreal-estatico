@@ -36,7 +36,7 @@ export default function Enroll() {
     };
 
     try {
-      const response = await fetch("https://montreal-backend-production.up.railway.app/api/inscripciones/", {
+      const response = await fetch('${API_URL}/api/inscripciones/', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
