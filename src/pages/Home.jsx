@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import banner from "../assets/banner1.png";
 import certBanner from "../assets/certificaciones-banner.png";
 import aboutImg from "../assets/about.png";
-import audio from "../media/montreal-audio.mp";
 import ContactoFormulario from "../components/ContactoFormulario"; // 👈 Importamos el nuevo componente
 
 export default function Home() {
