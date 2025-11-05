@@ -167,7 +167,7 @@ export default function Home() {
           Escucha nuestro mensaje institucional
         </h2>
         <audio controls className="w-75">
-          <source src="assets/montreal-audio.mp3" type="audio/mpeg" />
+          <source src="/media/montreal-audio.mp3" type="audio/mpeg" />
           Tu navegador no soporta el elemento de audio.
         </audio>
       </section>
