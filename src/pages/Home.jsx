@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import banner from "../assets/banner1.png";
 import certBanner from "../assets/certificaciones-banner.png";
 import aboutImg from "../assets/about.png";
+import audio from "../assets/media/montreal-audio.mp";
 import ContactoFormulario from "../components/ContactoFormulario"; // 👈 Importamos el nuevo componente
 
 export default function Home() {
@@ -166,7 +167,7 @@ export default function Home() {
           Escucha nuestro mensaje institucional
         </h2>
         <audio controls className="w-75">
-          <source src="assets/media/montreal-audio.mp3" type="audio/mpeg" />
+          <source src="assets/montreal-audio.mp3" type="audio/mpeg" />
           Tu navegador no soporta el elemento de audio.
         </audio>
       </section>
