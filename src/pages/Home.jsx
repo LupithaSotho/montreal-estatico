@@ -21,7 +21,7 @@ export default function Home() {
         <p className="lead">
           Idiomas, Tecnología y Cultura para un aprendizaje integral y global.
         </p>
-        <a href="#contacto" className="btn btn-light btn-lg fw-bold mt-3">
+        <a href="className="nav-item" className="btn btn-light btn-lg fw-bold mt-3">
           Contáctanos
         </a>
       </header>
