@@ -8,7 +8,8 @@ export default function Enroll() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // 🔹 URL del backend desde variable de entorno (Railway)
-  const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+ const API_URL = "https://montreal-backend-production.up.railway.app";
+
 
   // 🔹 Opciones por curso
   const courseLevels = {
