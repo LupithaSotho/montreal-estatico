@@ -12,7 +12,8 @@ export default function Inscripciones() {
   });
 
   // 🔹 URL base del backend (Railway o localhost)
-  const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+ const API_URL = "https://montreal-backend-production.up.railway.app";
+
 
   // 🔹 Cargar inscripciones
   const cargarInscripciones = async () => {
