@@ -7,6 +7,9 @@ export default function Enroll() {
   const [selectedLevel, setSelectedLevel] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // 🔹 URL del backend desde variable de entorno (Railway)
+  const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
   // 🔹 Opciones por curso
   const courseLevels = {
     Inglés: ["Starters", "Movers", "Flyers", "A2", "B1", "B2", "C1", "C2"],
@@ -36,7 +39,7 @@ export default function Enroll() {
     };
 
     try {
-      const response = await fetch('${API_URL}/api/inscripciones/', {
+      const response = await fetch(`${API_URL}/api/inscripciones/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -52,7 +55,7 @@ export default function Enroll() {
       }
     } catch (error) {
       console.error(error);
-      alert("⚠️ No se pudo conectar con el servidor. Revisa tu conexión o el backend.");
+      alert("⚠️ No se pudo conectar con el servidor. Revisa la URL del backend o la configuración CORS.");
     } finally {
       setIsSubmitting(false);
     }
@@ -207,12 +210,12 @@ export default function Enroll() {
           {/* 🔹 Botón para ver inscripciones */}
           <div className="text-center mt-5">
             <Link
-  to="/inscripciones"
-  className="btn fw-bold px-4 py-2 text-white"
-  style={{ backgroundColor: "#343a40" }}
->
-  🔍 Ver inscripciones registradas
-</Link>
+              to="/inscripciones"
+              className="btn fw-bold px-4 py-2 text-white"
+              style={{ backgroundColor: "#343a40" }}
+            >
+              🔍 Ver inscripciones registradas
+            </Link>
           </div>
         </div>
       </section>

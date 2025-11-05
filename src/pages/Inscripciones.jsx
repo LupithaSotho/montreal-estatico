@@ -11,46 +11,68 @@ export default function Inscripciones() {
     comentarios: "",
   });
 
-  // Cargar inscripciones
-  const cargarInscripciones = async () => {
-    const res = await fetch('${API_URL}/api/inscripciones/');
-    const data = await res.json();
-    setInscripciones(data);
-  };
+  // 🔹 URL base del backend (Railway o localhost)
+  const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
-  // Eliminar inscripción
-  const eliminarInscripcion = async (id) => {
-    if (window.confirm("¿Seguro que deseas eliminar esta inscripción?")) {
-      await fetch(`${API_URL}/api/inscripciones/${id}/`, {
-        method: "DELETE",
-      });
-      cargarInscripciones();
+  // 🔹 Cargar inscripciones
+  const cargarInscripciones = async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/inscripciones/`);
+      if (!res.ok) throw new Error("Error al obtener inscripciones");
+      const data = await res.json();
+      setInscripciones(data);
+    } catch (error) {
+      console.error(error);
+      alert("⚠️ No se pudo conectar con el servidor.");
     }
   };
 
-  // Editar inscripción
+  // 🔹 Eliminar inscripción
+  const eliminarInscripcion = async (id) => {
+    if (window.confirm("¿Seguro que deseas eliminar esta inscripción?")) {
+      try {
+        await fetch(`${API_URL}/api/inscripciones/${id}/`, {
+          method: "DELETE",
+        });
+        cargarInscripciones();
+      } catch (error) {
+        console.error(error);
+        alert("❌ Error al eliminar la inscripción.");
+      }
+    }
+  };
+
+  // 🔹 Iniciar edición
   const iniciarEdicion = (inscripcion) => {
     setEditId(inscripcion.id);
     setFormData(inscripcion);
   };
 
-  // Guardar cambios
+  // 🔹 Guardar edición
   const guardarEdicion = async (e) => {
     e.preventDefault();
-    await fetch(`${API_URL}/api/inscripciones/${editId}/`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-    setEditId(null);
-    cargarInscripciones();
+    try {
+      const res = await fetch(`${API_URL}/api/inscripciones/${editId}/`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Error al guardar cambios");
+      alert("✅ Cambios guardados correctamente.");
+      setEditId(null);
+      cargarInscripciones();
+    } catch (error) {
+      console.error(error);
+      alert("⚠️ No se pudo actualizar la inscripción.");
+    }
   };
 
-  // Manejar inputs del formulario
+  // 🔹 Manejar cambios del formulario
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // 🔹 Cargar inscripciones al montar el componente
   useEffect(() => {
     cargarInscripciones();
   }, []);
@@ -62,7 +84,7 @@ export default function Inscripciones() {
       </h2>
 
       {/* Tabla de inscripciones */}
-      <table className="table table-bordered table-striped">
+      <table className="table table-bordered table-striped align-middle text-center">
         <thead className="table-dark">
           <tr>
             <th>Nombre</th>
@@ -74,29 +96,37 @@ export default function Inscripciones() {
           </tr>
         </thead>
         <tbody>
-          {inscripciones.map((item) => (
-            <tr key={item.id}>
-              <td>{item.nombre}</td>
-              <td>{item.correo}</td>
-              <td>{item.curso}</td>
-              <td>{item.nivel}</td>
-              <td>{item.comentarios}</td>
-              <td>
-                <button
-                  className="btn btn-warning btn-sm me-2"
-                  onClick={() => iniciarEdicion(item)}
-                >
-                  ✏️ Editar
-                </button>
-                <button
-                  className="btn btn-danger btn-sm"
-                  onClick={() => eliminarInscripcion(item.id)}
-                >
-                  🗑️ Eliminar
-                </button>
+          {inscripciones.length > 0 ? (
+            inscripciones.map((item) => (
+              <tr key={item.id}>
+                <td>{item.nombre}</td>
+                <td>{item.correo}</td>
+                <td>{item.curso}</td>
+                <td>{item.nivel}</td>
+                <td>{item.comentarios}</td>
+                <td>
+                  <button
+                    className="btn btn-warning btn-sm me-2"
+                    onClick={() => iniciarEdicion(item)}
+                  >
+                    ✏️ Editar
+                  </button>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => eliminarInscripcion(item.id)}
+                  >
+                    🗑️ Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="6" className="text-muted">
+                No hay inscripciones registradas aún.
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
 
