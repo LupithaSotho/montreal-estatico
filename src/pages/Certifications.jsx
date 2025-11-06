@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Certifications() {
+  const [certificaciones, setCertificaciones] = useState([]);
+
+  // 🔹 URL del backend en Railway
+  const API_URL = "https://montreal-backend-production.up.railway.app";
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/certificaciones/`)
+      .then((res) => res.json())
+      .then((data) => setCertificaciones(data))
+      .catch((err) => console.error("Error al cargar certificaciones:", err));
+  }, []);
+
   return (
     <div>
-      {/* Encabezado */}
+      {/* ===== ENCABEZADO ===== */}
       <section
         className="text-center text-white py-5"
         style={{
@@ -13,90 +25,42 @@ export default function Certifications() {
         <div className="container">
           <h1 className="fw-bold mb-3">Certificaciones de Inglés</h1>
           <p className="lead">
-            Avala tus competencias con los prestigiosos exámenes de Cambridge.
+            Consulta y verifica las certificaciones emitidas por el Instituto Montreal Atlacomulco.
           </p>
         </div>
       </section>
 
-      {/* Información general */}
-      <section className="py-5 bg-white">
-        <div className="container">
-          <p>
-            Somos centro autorizado para aplicar exámenes de Cambridge English:
-            Starters, Movers, Flyers, KET, PET, FCE, CAE, CPE, además de IELTS y
-            Linguaskill.
-          </p>
-          <p>
-            Estas certificaciones <strong>no tienen caducidad</strong> y están
-            reconocidas internacionalmente por más de 25 000 universidades,
-            empresas y gobiernos.
-          </p>
-        </div>
-      </section>
-
-      {/* Listado de niveles */}
+      {/* ===== LISTA DE CERTIFICACIONES ===== */}
       <section className="py-5 bg-light">
         <div className="container">
-          <h2 className="text-center mb-4" style={{ color: "#D32F2F" }}>
-            Niveles de Cambridge
-          </h2>
-          <div className="row g-3">
-            <div className="col-md-4">
-              <div className="card h-100 shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title fw-bold">Young Learners</h5>
-                  <ul>
-                    <li>Starters (Pre A1)</li>
-                    <li>Movers (A1)</li>
-                    <li>Flyers (A2)</li>
-                  </ul>
-                </div>
-              </div>
+          {certificaciones.length > 0 ? (
+            <div className="table-responsive">
+              <table className="table table-striped align-middle text-center">
+                <thead className="table-primary">
+                  <tr>
+                    <th>Alumno</th>
+                    <th>Curso</th>
+                    <th>Folio</th>
+                    <th>Fecha de emisión</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {certificaciones.map((cert) => (
+                    <tr key={cert.id}>
+                      <td>{cert.alumno}</td>
+                      <td>{cert.curso}</td>
+                      <td>{cert.folio}</td>
+                      <td>{cert.fecha_emision}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            <div className="col-md-4">
-              <div className="card h-100 shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title fw-bold">General English</h5>
-                  <ul>
-                    <li>KET / A2 Key (A2)</li>
-                    <li>PET / B1 Preliminary (B1)</li>
-                    <li>FCE / B2 First (B2)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card h-100 shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title fw-bold">Advanced & Proficiency</h5>
-                  <ul>
-                    <li>CAE / C1 Advanced (C1)</li>
-                    <li>CPE / C2 Proficiency (C2)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          ) : (
+            <p className="text-center text-muted">Cargando certificaciones...</p>
+          )}
         </div>
       </section>
-
-      {/* Llamado a la acción */}
-      <section
-        className="text-center text-white py-5"
-        style={{ background: "linear-gradient(90deg, #388E3C, #D32F2F)" }}
-      >
-        <div className="container">
-          <h2 className="fw-bold mb-3">Prepárate hoy mismo</h2>
-          <p className="mb-4">
-            Inscríbete en nuestro curso de preparación y presenta tu examen.
-          </p>
-          <a href="/enroll" className="btn btn-light btn-lg fw-bold">
-            Ir a Inscripciones
-          </a>
-        </div>
-      </section>
-
-      
     </div>
   );
 }

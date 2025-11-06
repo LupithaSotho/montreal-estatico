@@ -1,38 +1,43 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 export default function Navbar() {
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const goToContacto = () => {
-    // Navegamos primero a la página principal
-    navigate("/");
-
-    // Esperamos un momento para que se cargue el Home
-    setTimeout(() => {
-      const contacto = document.getElementById("contacto");
-      if (contacto) {
-        contacto.scrollIntoView({ behavior: "smooth" });
+  const scrollToContacto = () => {
+    if (location.pathname === "/") {
+      const contactoSection = document.getElementById("contacto");
+      if (contactoSection) {
+        contactoSection.scrollIntoView({ behavior: "smooth" });
       }
-    }, 600);
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        const contactoSection = document.getElementById("contacto");
+        if (contactoSection) {
+          contactoSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+    }
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top border-bottom shadow-sm">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark"
+      style={{ background: "linear-gradient(90deg, #1565C0, #7B1FA2)" }}
+    >
       <div className="container">
-        {/* LOGO + NOMBRE */}
-        <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
+        <Link className="navbar-brand fw-bold" to="/">
           <img
             src={logo}
-            alt="Logo Montreal Atlacomulco"
-            width="40"
-            height="40"
+            alt="Logo Montreal"
+            width="45"
             className="me-2 rounded-circle"
           />
           Montreal Atlacomulco
         </Link>
 
-        {/* BOTÓN HAMBURGUESA */}
         <button
           className="navbar-toggler"
           type="button"
@@ -42,31 +47,36 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* MENÚ DE NAVEGACIÓN */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Inicio</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/quienes-somos">Quiénes somos</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/cursos">Cursos</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/enroll">Inscripciones</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/certificaciones">Certificaciones</Link>
+              <Link className="nav-link" to="/">
+                Inicio
+              </Link>
             </li>
 
-            {/* 🔹 CONTACTO → lleva al formulario de contacto */}
+            <li className="nav-item">
+              <Link className="nav-link" to="/cursos">
+                Cursos
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/certificaciones">
+                Certificaciones
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/quienes-somos">
+                Quiénes somos
+              </Link>
+            </li>
+
             <li className="nav-item">
               <button
-                onClick={goToContacto}
-                className="nav-link btn btn-link p-0"
-                style={{ textDecoration: "none" }}
+                onClick={scrollToContacto}
+                className="btn btn-outline-light ms-2"
               >
                 Contacto
               </button>

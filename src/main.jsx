@@ -10,8 +10,6 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 
 import Home from "./pages/Home.jsx";
 import Courses from "./pages/Courses.jsx";
-import Enroll from "./pages/Enroll.jsx";
-import Inscripciones from "./pages/Inscripciones.jsx"; // ✅ Importa la página de lista
 import Certifications from "./pages/Certifications.jsx";
 import About from "./pages/About.jsx";
 import NotFound from "./pages/NotFound.jsx";
@@ -27,11 +25,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/" element={<Home />} />
           <Route path="/quienes-somos" element={<About />} />
           <Route path="/cursos" element={<Courses />} />
-
-          {/* ✅ Rutas distintas para inscripción y lista */}
-          <Route path="/enroll" element={<Enroll />} />
-          <Route path="/inscripciones" element={<Inscripciones />} />
-
           <Route path="/certificaciones" element={<Certifications />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

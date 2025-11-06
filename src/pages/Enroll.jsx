@@ -40,26 +40,28 @@ export default function Enroll() {
     };
 
     try {
-      const response = await fetch(`${API_URL}/api/inscripciones/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+  const response = await fetch(`${API_URL}/api/inscripciones/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
 
-      if (response.ok) {
-        alert("✅ Inscripción registrada correctamente.");
-        event.target.reset();
-        setSelectedCourse("");
-        setSelectedLevel("");
-      } else {
-        alert("❌ Error al registrar la inscripción. Verifica los datos.");
-      }
-    } catch (error) {
-      console.error(error);
-      alert("⚠️ No se pudo conectar con el servidor. Revisa la URL del backend o la configuración CORS.");
-    } finally {
-      setIsSubmitting(false);
-    }
+  if (response.ok) {
+  alert("✅ Inscripción registrada correctamente.");
+  event.target.reset();
+  setSelectedCourse("");
+  setSelectedLevel("");
+} else {
+  const errorData = await response.json().catch(() => ({}));
+  console.error("❌ Error exacto del backend:", errorData);
+  alert("❌ Error al registrar la inscripción. Revisa la consola.");
+}
+
+} catch (error) {
+  console.error("⚠️ Error de conexión:", error);
+  alert("No se pudo conectar con el servidor.");
+}
+
   };
 
   return (
