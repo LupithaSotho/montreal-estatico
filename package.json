@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "private": true,
-  "homepage": "https://LupithaSotho.github.io/montreal-atlacomulco",
+  "homepage": "https://LupithaSotho.github.io/estatico-montreal",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
