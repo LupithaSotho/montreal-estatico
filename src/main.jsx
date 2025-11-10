@@ -2,7 +2,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // 👈 Import obligatorio
 
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
@@ -16,7 +16,7 @@ import NotFound from "./pages/NotFound.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter basename="/estatico-montreal"> {/* 👈 necesario para GitHub Pages */}
       <ScrollToTop />
       <Navbar />
 
@@ -31,6 +31,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </div>
 
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 );
+
