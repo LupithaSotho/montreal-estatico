@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "private": true,
-  "homepage": "https://LupithaSotho.github.io/estatico-montreal",
+  "homepage": "https://LupithaSotho.github.io/montreal-estatico",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
