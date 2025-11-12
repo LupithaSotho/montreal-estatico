@@ -3,10 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-// 🔹 Agregamos React Router
+// 🔹 Usa HashRouter para GitHub Pages
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-// 🔹 Importamos las nuevas páginas
+// 🔹 Importaciones CORRECTAS (mayúsculas)
 import Clientes from "./pages/clientes";
 import Galeria from "./pages/Galeria";
 import Testimonios from "./pages/Testimonios";
@@ -16,7 +16,8 @@ function App() {
 
   return (
     <Router>
-      {/* 🔹 Menú simple temporal (luego lo sustituimos por tu Navbar real) */}
+
+      {/* 🔹 Menú simple para navegar */}
       <nav style={{ padding: "15px", background: "#eee", marginBottom: "20px" }}>
         <Link to="/" style={{ marginRight: "20px" }}>Inicio</Link>
         <Link to="/clientes" style={{ marginRight: "20px" }}>Clientes / Aliados</Link>
@@ -25,7 +26,7 @@ function App() {
       </nav>
 
       <Routes>
-        {/* 🔹 Pantalla original de Vite */}
+        {/* Página principal */}
         <Route
           path="/"
           element={
@@ -40,27 +41,23 @@ function App() {
               </div>
               <h1>Vite + React</h1>
               <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
+                <button onClick={() => setCount(count + 1)}>
                   count is {count}
                 </button>
-                <p>
-                  Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
+                <p>Edit <code>src/App.jsx</code> and save to test HMR</p>
               </div>
-              <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-              </p>
             </>
           }
         />
 
-        {/* 🔹 NUEVAS SECCIONES */}
+        {/* Nuevas secciones */}
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/galeria" element={<Galeria />} />
         <Route path="/testimonios" element={<Testimonios />} />
       </Routes>
+
     </Router>
   )
 }
 
-export default App
+export default App;
