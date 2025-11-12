@@ -63,15 +63,15 @@ export default function Navbar() {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/clientes"> Aliados estratégicos</Link>
+              <Link className="nav-link" to="/clientes">Aliados estratégicos</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/galeria">Galería </Link>
+              <Link className="nav-link" to="/galeria">Galería</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/testimonios">Testimonios </Link>
+              <Link className="nav-link" to="/testimonios">Testimonios</Link>
             </li>
 
             <li className="nav-item">
@@ -79,7 +79,10 @@ export default function Navbar() {
             </li>
 
             <li className="nav-item">
-              <button onClick={scrollToContacto} className="btn btn-outline-light ms-2">
+              <button
+                onClick={scrollToContacto}
+                className="btn btn-outline-light ms-2"
+              >
                 Contacto
               </button>
             </li>
