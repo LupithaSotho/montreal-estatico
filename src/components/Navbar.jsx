@@ -28,7 +28,7 @@ export default function Navbar() {
       style={{ background: "linear-gradient(90deg, #1565C0, #7B1FA2)" }}
     >
       <div className="container">
-        <Link className="navbar-brand fw-bold" to="#/">
+        <Link className="navbar-brand fw-bold" to="/">
           <img
             src={logo}
             alt="Logo Montreal"
@@ -51,38 +51,35 @@ export default function Navbar() {
           <ul className="navbar-nav ms-auto">
 
             <li className="nav-item">
-              <Link className="nav-link" to="#/">Inicio</Link>
+              <Link className="nav-link" to="/">Inicio</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="#/cursos">Cursos</Link>
+              <Link className="nav-link" to="/cursos">Cursos</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="#/certificaciones">Certificaciones</Link>
+              <Link className="nav-link" to="/certificaciones">Certificaciones</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="#/clientes">Aliados estratégicos</Link>
+              <Link className="nav-link" to="/clientes"> Aliados estratégicos</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="#/galeria">Galería</Link>
+              <Link className="nav-link" to="/galeria">Galería </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="#/testimonios">Testimonios</Link>
+              <Link className="nav-link" to="/testimonios">Testimonios </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="#/quienes-somos">Quiénes somos</Link>
+              <Link className="nav-link" to="/quienes-somos">Quiénes somos</Link>
             </li>
 
             <li className="nav-item">
-              <button
-                onClick={scrollToContacto}
-                className="btn btn-outline-light ms-2"
-              >
+              <button onClick={scrollToContacto} className="btn btn-outline-light ms-2">
                 Contacto
               </button>
             </li>
