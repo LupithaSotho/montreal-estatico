@@ -49,38 +49,41 @@ export default function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+
             <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Inicio
-              </Link>
+              <Link className="nav-link" to="/">Inicio</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/cursos">
-                Cursos
-              </Link>
+              <Link className="nav-link" to="/cursos">Cursos</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/certificaciones">
-                Certificaciones
-              </Link>
+              <Link className="nav-link" to="/certificaciones">Certificaciones</Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/quienes-somos">
-                Quiénes somos
-              </Link>
+              <Link className="nav-link" to="/clientes"> Aliados estratégicos</Link>
             </li>
 
             <li className="nav-item">
-              <button
-                onClick={scrollToContacto}
-                className="btn btn-outline-light ms-2"
-              >
+              <Link className="nav-link" to="/galeria">Galería </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/testimonios">Testimonios </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/quienes-somos">Quiénes somos</Link>
+            </li>
+
+            <li className="nav-item">
+              <button onClick={scrollToContacto} className="btn btn-outline-light ms-2">
                 Contacto
               </button>
             </li>
+
           </ul>
         </div>
       </div>
