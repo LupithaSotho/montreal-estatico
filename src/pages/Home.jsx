@@ -166,7 +166,7 @@ export default function Home() {
             <div className="col-md-4">
               <div className="card shadow-sm p-3">
                 <h4 className="fw-bold">CECyTEM</h4>
-                <p>Colaboración académica en Eduacaión de Formación Dual</p>
+                <p>Colaboración académica en Educación de Formación Dual</p>
               </div>
             </div>
 
