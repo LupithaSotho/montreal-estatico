@@ -50,7 +50,6 @@ export default function Navbar() {
 
             <li className="nav-item">
               <Link className="nav-link" to="/">Inicio</Link>
-<<<<<<< HEAD
             </li>
 
             <li className="nav-item">
@@ -77,28 +76,6 @@ export default function Navbar() {
 
             <li className="nav-item">
               <Link className="nav-link" to="/certificaciones">Certificaciones</Link>
-=======
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/cursos">Cursos</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/certificaciones">Certificaciones</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/clientes">Aliados estratégicos</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/galeria">Galería</Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/testimonios">Testimonios</Link>
->>>>>>> 5c13e4b0839cb26dadef17c3e0d7a89aca552af0
             </li>
 
             <li className="nav-item">

@@ -202,14 +202,14 @@ export default function Home() {
       <div className="col-md-4" data-aos="zoom-in">
         <div className="card shadow-sm border-0">
           <img
-            src={port1}
+            src={port3}
             alt="Proyecto 1"
             className="img-fluid rounded"
             style={{ height: "240px", objectFit: "cover" }}
           />
           <div className="card-body text-center">
-            <h5 className="fw-bold mb-2">Proyecto Educativo</h5>
-            <p className="text-muted">Materiales y recursos para clases de inglés y computación.</p>
+            <h5 className="fw-bold mb-2">Proyecto Educativos</h5>
+            <p className="text-muted">Excursiones a KidZania</p>
           </div>
         </div>
       </div>
@@ -218,7 +218,7 @@ export default function Home() {
       <div className="col-md-4" data-aos="zoom-in">
         <div className="card shadow-sm border-0">
           <img
-            src={port2}
+            src={port1}
             alt="Proyecto 2"
             className="img-fluid rounded"
             style={{ height: "240px", objectFit: "cover" }}
@@ -234,14 +234,14 @@ export default function Home() {
       <div className="col-md-4" data-aos="zoom-in">
         <div className="card shadow-sm border-0">
           <img
-            src={port3}
+            src={port2}
             alt="Proyecto 3"
             className="img-fluid rounded"
             style={{ height: "240px", objectFit: "cover" }}
           />
           <div className="card-body text-center">
-            <h5 className="fw-bold mb-2">Eventos y Cultura</h5>
-            <p className="text-muted">Actividades, talleres y proyectos con la comunidad.</p>
+            <h5 className="fw-bold mb-2">Eventos </h5>
+            <p className="text-muted">Talleres y proyectos con la comunidad.</p>
           </div>
         </div>
       </div>
@@ -314,7 +314,6 @@ export default function Home() {
         <h2 className="mb-3" style={{ color: "#1565C0" }}>
           Escucha nuestro mensaje institucional
         </h2>
-<<<<<<< HEAD
 
         <audio controls className="w-75">
           <source
@@ -323,13 +322,6 @@ export default function Home() {
           />
           Tu navegador no soporta el elemento de audio.
         </audio>
-=======
-       <audio controls className="w-75">
-  <source src="/montreal-estatico/media/montreal-audio.mp3" type="audio/mpeg" />
-  Tu navegador no soporta el elemento de audio.
-</audio>
-
->>>>>>> 5c13e4b0839cb26dadef17c3e0d7a89aca552af0
       </section>
     </div>
   );
