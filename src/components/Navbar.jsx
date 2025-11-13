@@ -5,19 +5,16 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const scrollToContacto = () => {
+  // 🔹 Función general para hacer scroll a cualquier ID en el home
+  const scrollToSection = (sectionId) => {
     if (location.pathname === "/") {
-      const contactoSection = document.getElementById("contacto");
-      if (contactoSection) {
-        contactoSection.scrollIntoView({ behavior: "smooth" });
-      }
+      const section = document.getElementById(sectionId);
+      if (section) section.scrollIntoView({ behavior: "smooth" });
     } else {
       navigate("/");
       setTimeout(() => {
-        const contactoSection = document.getElementById("contacto");
-        if (contactoSection) {
-          contactoSection.scrollIntoView({ behavior: "smooth" });
-        }
+        const section = document.getElementById(sectionId);
+        if (section) section.scrollIntoView({ behavior: "smooth" });
       }, 300);
     }
   };
@@ -28,6 +25,7 @@ export default function Navbar() {
       style={{ background: "linear-gradient(90deg, #1565C0, #7B1FA2)" }}
     >
       <div className="container">
+
         <Link className="navbar-brand fw-bold" to="/">
           <img
             src={logo}
@@ -49,38 +47,50 @@ export default function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
+
             <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Inicio
+              <Link className="nav-link" to="/">Inicio</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" onClick={() => scrollToSection("aliados")}>
+                Aliados estratégicos
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/cursos">
-                Cursos
+              <Link className="nav-link" onClick={() => scrollToSection("portafolio")}>
+                Portafolio
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/certificaciones">
-                Certificaciones
+              <Link className="nav-link" onClick={() => scrollToSection("testimonios")}>
+                Testimonios
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/quienes-somos">
-                Quiénes somos
-              </Link>
+              <Link className="nav-link" to="/cursos">Cursos</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/certificaciones">Certificaciones</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/quienes-somos">Quiénes somos</Link>
             </li>
 
             <li className="nav-item">
               <button
-                onClick={scrollToContacto}
+                onClick={() => scrollToSection("contacto")}
                 className="btn btn-outline-light ms-2"
               >
                 Contacto
               </button>
             </li>
+
           </ul>
         </div>
       </div>

@@ -16,7 +16,7 @@ import NotFound from "./pages/NotFound.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename="/estatico-montreal"> {/* ✅ Base path correcto */}
+    <BrowserRouter basename="/montreal-estatico"> {/* ✅ Base path correcto */}
       <ScrollToTop />
       <Navbar />
 
