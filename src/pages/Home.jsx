@@ -184,8 +184,6 @@ export default function Home() {
       {/* ============= NUEVA SECCIÓN: PORTAFOLIO ============= */}
       {/* ===================================================== */}
 
-     /* ====== PORTAFOLIO ====== */
-
 
 <section id="portafolio" className="py-5 bg-white">
   <div className="container">
