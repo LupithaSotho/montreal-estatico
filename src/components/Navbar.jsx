@@ -48,7 +48,7 @@ export default function Navbar() {
             <li className="nav-item">
               <Link className="nav-link" to="/">Inicio</Link>
             </li>
-<li className="nav-item">
+            <li className="nav-item">
               <Link className="nav-link" to="/quienes-somos">Quiénes somos</Link>
             </li>
            
@@ -61,12 +61,11 @@ export default function Navbar() {
             </li>
 
             
-             <li className="nav-item">
+            <li className="nav-item">
               <button
                 className="nav-link btn btn-link p-0"
                 onClick={() => goToSection("aliados")}
-              >
-                Aliados estratégicos
+              >Aliados estratégicos  
               </button>
             </li>
 
@@ -74,8 +73,7 @@ export default function Navbar() {
               <button
                 className="nav-link btn btn-link p-0"
                 onClick={() => goToSection("portafolio")}
-              >
-                Portafolio
+              >Portafolio    
               </button>
             </li>
 
@@ -83,8 +81,7 @@ export default function Navbar() {
               <button
                 className="nav-link btn btn-link p-0"
                 onClick={() => goToSection("testimonios")}
-              >
-                Testimonios
+              >Testimonios   
               </button>
             </li>
 
@@ -93,8 +90,7 @@ export default function Navbar() {
               <button
                 onClick={() => goToSection("contacto")}
                 className="btn btn-outline-light ms-2"
-              >
-                Contacto
+              >Contacto
               </button>
             </li>
           </ul>
