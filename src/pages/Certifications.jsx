@@ -1,17 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export default function Certifications() {
-  const [certificaciones, setCertificaciones] = useState([]);
-
-  // 🔹 URL del backend en Railway
-  const API_URL = "https://montreal-backend-production.up.railway.app";
-
-  useEffect(() => {
-    fetch(`${API_URL}/api/certificaciones/`)
-      .then((res) => res.json())
-      .then((data) => setCertificaciones(data))
-      .catch((err) => console.error("Error al cargar certificaciones:", err));
-  }, []);
+  // 🔹 Datos estáticos (sin backend)
+  const certificaciones = [
+    {
+      id: 1,
+      alumno: "Ana López Ramírez",
+      curso: "Inglés A2 - Key English Test (KET)",
+      folio: "MONT2025-001",
+      fecha_emision: "2025-03-10",
+    },
+    {
+      id: 2,
+      alumno: "José Hernández Pérez",
+      curso: "Inglés B1 - Preliminary English Test (PET)",
+      folio: "MONT2025-002",
+      fecha_emision: "2025-03-10",
+    },
+    {
+      id: 3,
+      alumno: "María García Torres",
+      curso: "Inglés B2 - First Certificate (FCE)",
+      folio: "MONT2025-003",
+      fecha_emision: "2025-03-11",
+    },
+    {
+      id: 4,
+      alumno: "Carlos Rodríguez Díaz",
+      curso: "Inglés C1 - Advanced (CAE)",
+      folio: "MONT2025-004",
+      fecha_emision: "2025-03-12",
+    },
+  ];
 
   return (
     <div>
@@ -25,7 +45,7 @@ export default function Certifications() {
         <div className="container">
           <h1 className="fw-bold mb-3">Certificaciones de Inglés</h1>
           <p className="lead">
-            Consulta y verifica las certificaciones emitidas por el Instituto Montreal Atlacomulco.
+            Consulta las certificaciones emitidas por el Instituto Montreal Atlacomulco.
           </p>
         </div>
       </section>
@@ -35,7 +55,7 @@ export default function Certifications() {
         <div className="container">
           {certificaciones.length > 0 ? (
             <div className="table-responsive">
-              <table className="table table-striped align-middle text-center">
+              <table className="table table-striped align-middle text-center shadow-sm">
                 <thead className="table-primary">
                   <tr>
                     <th>Alumno</th>
@@ -57,7 +77,9 @@ export default function Certifications() {
               </table>
             </div>
           ) : (
-            <p className="text-center text-muted">Cargando certificaciones...</p>
+            <p className="text-center text-muted">
+              No hay certificaciones disponibles en este momento.
+            </p>
           )}
         </div>
       </section>

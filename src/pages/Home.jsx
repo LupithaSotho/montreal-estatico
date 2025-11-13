@@ -314,6 +314,7 @@ export default function Home() {
         <h2 className="mb-3" style={{ color: "#1565C0" }}>
           Escucha nuestro mensaje institucional
         </h2>
+<<<<<<< HEAD
 
         <audio controls className="w-75">
           <source
@@ -322,6 +323,13 @@ export default function Home() {
           />
           Tu navegador no soporta el elemento de audio.
         </audio>
+=======
+       <audio controls className="w-75">
+  <source src="/montreal-estatico/media/montreal-audio.mp3" type="audio/mpeg" />
+  Tu navegador no soporta el elemento de audio.
+</audio>
+
+>>>>>>> 5c13e4b0839cb26dadef17c3e0d7a89aca552af0
       </section>
     </div>
   );
