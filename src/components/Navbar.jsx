@@ -6,18 +6,16 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   // 🔹 Función general para hacer scroll a cualquier ID en el home
-  const scrollToSection = (sectionId) => {
-    if (location.pathname === "/") {
-      const section = document.getElementById(sectionId);
-      if (section) section.scrollIntoView({ behavior: "smooth" });
-    } else {
-      navigate("/");
-      setTimeout(() => {
-        const section = document.getElementById(sectionId);
-        if (section) section.scrollIntoView({ behavior: "smooth" });
-      }, 300);
+ const goToSection = (sectionId) => {
+  if (location.pathname !== "/") {
+    navigate("/", { state: { target: sectionId } });
+  } else {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }
+};
 
   return (
     <nav
@@ -53,19 +51,19 @@ export default function Navbar() {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" onClick={() => scrollToSection("aliados")}>
+              <Link className="nav-link" onClick={() => goToSection("aliados")}>
                 Aliados estratégicos
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" onClick={() => scrollToSection("portafolio")}>
+              <Link className="nav-link" onClick={() => goToSection("portafolio")}>
                 Portafolio
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" onClick={() => scrollToSection("testimonios")}>
+              <Link className="nav-link" onClick={() => goToSection("testimonios")}>
                 Testimonios
               </Link>
             </li>

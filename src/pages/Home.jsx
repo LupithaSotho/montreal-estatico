@@ -315,7 +315,7 @@ export default function Home() {
 
         <audio controls className="w-75">
           <source
-            src="/montreal-estatico/media/montreal-audio.mp3"
+            src="https://lupithasotho.github.io/montreal-atlacomulco/media/montreal-audio.mp3"
             type="audio/mpeg"
           />
           Tu navegador no soporta el elemento de audio.
