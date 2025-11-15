@@ -308,19 +308,19 @@ export default function Home() {
       </section>
 
       {/* ====== AUDIO INSTITUCIONAL ====== */}
-      <section className="text-center py-5 bg-white">
+      {/* ====== AUDIO INSTITUCIONAL ====== */}
+      <section className="py-5 bg-white text-center">
         <h2 className="mb-3" style={{ color: "#1565C0" }}>
           Escucha nuestro mensaje institucional
         </h2>
-
         <audio controls className="w-75">
-          <source
-            src="https://lupithasotho.github.io/montreal-atlacomulco/media/montreal-audio.mp3"
-            type="audio/mpeg"
-          />
-          Tu navegador no soporta el elemento de audio.
+        <source src="/montreal-audio.mp3" type="audio/mpeg" />
+         Tu navegador no soporta el elemento de audio.
         </audio>
+
+
       </section>
+
     </div>
   );
 }
